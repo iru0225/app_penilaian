@@ -68,7 +68,14 @@ function App() {
         })
       })
 
-      window.alert(JSON.stringify(payload))
+      const a = document.createElement('a')
+      const file = new Blob([JSON.stringify(payload)], { type: 'text/plain' })
+
+      a.href = URL.createObjectURL(file)
+      a.setAttribute('download', 'data_penilaian.txt')
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
     }
   }
 
